@@ -9,7 +9,8 @@ import {
     Hammer,
     Droplets,
     ChevronRight,
-    Check
+    Check,
+    Phone
 } from 'lucide-react';
 import { InfiniteMovingCards } from "../components/ui/InfiniteMovingCards";
 import { ASSETS } from '../lib/constants';
@@ -21,117 +22,103 @@ import Spores from '../components/effects/Spores';
 import Flashlight from '../components/effects/Flashlight';
 
 const ServiceCard = ({ icon, title, description }) => (
-    <Card hover className="h-full border-t-4 border-t-brand-primary">
-        <div className="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand-primary transition-colors duration-300">
-            {React.cloneElement(icon, { className: "w-7 h-7 text-brand-primary group-hover:text-white transition-colors duration-300" })}
+    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-green-200 h-full flex flex-col">
+        <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-green-600 transition-colors duration-300">
+            {React.cloneElement(icon, { className: "w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-300" })}
         </div>
-        <h3 className="text-xl font-bold text-brand-dark mb-3 font-display">{title}</h3>
-        <p className="text-slate-600 leading-relaxed text-sm">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 font-display">{title}</h3>
+        <p className="text-gray-600 leading-relaxed text-sm flex-grow">
             {description}
         </p>
-    </Card>
+    </div>
 );
 
 const FeaturePoint = ({ text }) => (
-    <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-brand-primary/30 transition duration-300">
-        <div className="bg-emerald-100 rounded-full p-1.5 mr-4">
-            <Check className="w-4 h-4 text-brand-primary" />
+    <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-green-300 transition duration-300">
+        <div className="bg-green-100 rounded-full p-1.5 mr-4">
+            <Check className="w-4 h-4 text-green-600" />
         </div>
-        <span className="font-semibold text-brand-dark">{text}</span>
+        <span className="font-semibold text-gray-900">{text}</span>
     </div>
 );
 
 const Home = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in duration-700">
-            {/* Hero Section */}
-            <div className="relative h-[800px] flex items-center justify-center overflow-hidden bg-brand-dark">
-                {/* 3D Background */}
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <ThreeCanvas>
-                        <Flashlight color="#4ade80" intensity={3} />
-                        <Spores count={150} color="#059669" />
-                    </ThreeCanvas>
-                </div>
-
-                {/* Fallback Image / Overlay */}
-                <div className="absolute inset-0 z-0 mix-blend-overlay opacity-20">
+{/* Hero Section */}
+            <div className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
+                {/* Hero Image Background */}
+                <div className="absolute inset-0 z-0">
                     <img
-                        src={ASSETS.heroBg}
-                        alt="Background Pattern"
-                        className="w-full h-full object-cover grayscale"
+                        src={ASSETS.heroImage}
+                        alt="Professional Mold Inspection"
+                        className="w-full h-full object-cover"
                     />
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/70 to-brand-light z-0"></div>
+                {/* Dark Overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10"></div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mt-[-80px]">
+                {/* Subtle 3D Effects */}
+                <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+                    <ThreeCanvas>
+                        <Flashlight color="#4ade80" intensity={2} />
+                        <Spores count={80} color="#059669" />
+                    </ThreeCanvas>
+                </div>
+
+<div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
                     <div className="max-w-4xl mx-auto">
-                        <div className="inline-flex items-center bg-brand-primary/10 backdrop-blur-md text-brand-primary border border-brand-primary/20 rounded-full px-5 py-2 text-sm font-bold uppercase tracking-wider mb-8 animate-slide-up">
-                            <ShieldCheck className="w-4 h-4 mr-2" /> Serving All of California
+                        <div className="inline-flex items-center bg-green-600/90 backdrop-blur-sm text-white border border-green-500/30 rounded-full px-5 py-2 text-sm font-bold uppercase tracking-wider mb-8 animate-slide-up shadow-lg">
+                            <ShieldCheck className="w-4 h-4 mr-2" /> Licensed & IICRC Certified
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8 drop-shadow-2xl font-display tracking-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                            Certified Mold Inspection <br />& <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-emerald-300">Remediation</span>
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-2xl font-display tracking-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                            Professional Mold <br />Inspection & <span className="text-green-400">Remediation</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                            We create safer, healthier environments using advanced forensic techniques and eco-friendly remediation.
+                        <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto animate-slide-up drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
+                            Protecting your health and property with expert mold detection, testing, and removal services throughout California.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-5 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-                            <Button
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
+<button
                                 onClick={() => navigateTo('contact')}
-                                variant="primary"
-                                size="lg"
-                                className="shadow-emerald-900/20"
+                                className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                             >
-                                Get a Free Quote <ArrowRight className="w-5 h-5 ml-2" />
-                            </Button>
-                            <Button
-                                href="tel:7073505074"
-                                as="a" // Button component handles onClick, here we use 'a' tag behavior if Button supports, or wrap it. 
-                                // Actually Button is 'button', so I'll wrap it or just use Button logic. 
-                                // Re-reading Button.jsx: it renders <button>, props passed. 
-                                // I'll stick to a clean button or 'a' tag styled like button if I can, but Button.jsx is button.
-                                // I'll use a normal button for call or wrap it.
-                                onClick={() => window.location.href = 'tel:7073505074'}
-                                variant="secondary"
-                                size="lg"
-                            >
-                                Call (707) 350-5074
-                            </Button>
+                                Get a Free Quote <ArrowRight className="w-5 h-5 ml-2 inline" />
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Quick Stats / Trust Bar */}
-            <div className="relative z-20 -mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-                <div className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl overflow-hidden py-8">
+{/* Quick Stats / Trust Bar */}
+            <div className="relative z-20 -mt-12 md:-mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+                <div className="bg-white/95 backdrop-blur-xl border border-green-100 rounded-2xl shadow-2xl overflow-hidden py-6 md:py-8">
                     <InfiniteMovingCards
                         items={[
                             {
-                                title: "24/7 Emergency",
-                                desc: "Always here when you need us.",
-                                icon: <Clock className="w-8 h-8 text-brand-primary" />
+                                title: "24/7 Emergency Response",
+                                desc: "Available when you need us most",
+                                icon: <Clock className="w-8 h-8 text-green-600" />
                             },
                             {
                                 title: "IICRC Certified",
-                                desc: "Institute Verified Technicians",
-                                icon: <Award className="w-8 h-8 text-brand-primary" />
+                                desc: "Industry-certified technicians",
+                                icon: <Award className="w-8 h-8 text-green-600" />
                             },
                             {
-                                title: "EPA Approved",
-                                desc: "Safe, Eco-Friendly Procedures",
-                                icon: <CheckCircle className="w-8 h-8 text-brand-primary" />
+                                title: "Mold Testing & Lab Analysis",
+                                desc: "Professional laboratory results",
+                                icon: <Search className="w-8 h-8 text-green-600" />
+                            },
+                            {
+                                title: "Thermal Imaging",
+                                desc: "Advanced moisture detection",
+                                icon: <CheckCircle className="w-8 h-8 text-green-600" />
                             },
                             {
                                 title: "Licensed & Insured",
-                                desc: "Professional & Protected",
-                                icon: <ShieldCheck className="w-8 h-8 text-brand-primary" />
-                            },
-                            {
-                                title: "Advanced Tech",
-                                desc: "Moisture Meters & Thermal Imaging",
-                                icon: <Search className="w-8 h-8 text-brand-primary" />
+                                desc: "Fully protected service",
+                                icon: <ShieldCheck className="w-8 h-8 text-green-600" />
                             },
                         ]}
                         direction="left"
@@ -143,50 +130,56 @@ const Home = ({ navigateTo }) => {
 
             {/* Services Section */}
             <Section variant="light">
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-6">Our Services</h2>
-                    <div className="w-24 h-1.5 bg-brand-primary mx-auto rounded-full mb-8"></div>
-                    <p className="text-xl text-slate-600 leading-relaxed">
-                        Mold can have serious health implications and damage property. We offer comprehensive, science-backed solutions to restore your space.
+<div className="text-center max-w-3xl mx-auto mb-20">
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Professional Mold Services</h2>
+                    <div className="w-24 h-1.5 bg-green-600 mx-auto rounded-full mb-8"></div>
+                    <p className="text-xl text-gray-600 leading-relaxed">
+                        Certified mold inspection, testing, and remediation services to protect your health and property with proven, science-based methods.
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    <ServiceCard
+<ServiceCard
                         icon={<Search />}
-                        title="Inspection & Assessment"
-                        description="Thorough detection using advanced moisture meters and thermal imaging to find hidden mold."
+                        title="Mold Inspection & Testing"
+                        description="Comprehensive visual inspection with air sampling, surface testing, and laboratory analysis to identify mold types and concentrations."
                     />
                     <ServiceCard
                         icon={<ShieldCheck />}
-                        title="Containment"
-                        description="Isolating contaminated areas with industrial-grade barriers to prevent the spread of mold spores."
+                        title="Moisture Detection"
+                        description="Advanced thermal imaging and moisture meter technology to locate hidden water sources and mold growth behind walls."
                     />
                     <ServiceCard
                         icon={<Hammer />}
-                        title="Mold Removal"
-                        description="Safe, complete removal of mold colonies and affected materials following strict IICRC protocols."
+                        title="Mold Remediation"
+                        description="Safe and complete removal following IICRC standards with containment, HEPA filtration, and proper disposal."
                     />
                     <ServiceCard
                         icon={<Droplets />}
-                        title="Cleaning & Disinfection"
-                        description="Deep cleaning of surfaces and HEPA air filtration to ensure a safe, spore-free environment."
+                        title="Structural Drying"
+                        description="Professional drying equipment and techniques to eliminate moisture and prevent future mold growth."
                     />
                     <ServiceCard
                         icon={<CheckCircle />}
-                        title="Moisture Control"
-                        description="Identifying and rectifying the source of moisture to prevent future growth and recurrence."
+                        title="Post-Remediation Testing"
+                        description="Verification testing to ensure mold levels are safe and your property is fully restored to healthy conditions."
                     />
 
-                    {/* CTA Card */}
-                    <div className="bg-brand-dark rounded-2xl p-8 flex flex-col justify-center items-center text-center text-white shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition duration-300">
-                        <div className="absolute inset-0 bg-brand-primary/10 group-hover:bg-brand-primary/20 transition duration-300"></div>
+{/* CTA Card */}
+                    <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 flex flex-col justify-center items-center text-center text-white shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition duration-300">
+                        <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition duration-300"></div>
                         <div className="relative z-10">
-                            <h3 className="text-2xl font-bold mb-4 font-display">Need Help Now?</h3>
-                            <p className="mb-8 text-slate-300">Our experts are ready to assist you immediately. Don't wait.</p>
-                            <Button onClick={() => navigateTo('contact')} variant="primary" className="w-full">
-                                Contact Us
-                            </Button>
+                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 mb-4 inline-block">
+                                <Phone className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 font-display">Emergency Mold Service?</h3>
+                            <p className="mb-8 text-white/90">Call now for immediate assistance with mold issues. Available 24/7.</p>
+                            <button 
+                                onClick={() => window.location.href = 'tel:7073505074'} 
+                                className="bg-white text-green-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 w-full"
+                            >
+                                Call (707) 350-5074
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -205,7 +198,7 @@ const Home = ({ navigateTo }) => {
                         />
                     </div>
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-8">What sets us apart?</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">Why Choose CA Mold Solutions?</h2>
                         <div className="space-y-4 mb-10">
                             <FeaturePoint text="24/7 Emergency Response" />
                             <FeaturePoint text="IICRC Certified Expertise" />

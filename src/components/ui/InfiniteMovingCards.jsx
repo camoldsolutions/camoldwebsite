@@ -62,7 +62,7 @@ export const InfiniteMovingCards = ({
         <div
             ref={containerRef}
             className={cn(
-                "scroller relative z-20 max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+                "scroller relative z-20 max-w-7xl overflow-hidden",
                 className
             )}
         >
@@ -76,17 +76,17 @@ export const InfiniteMovingCards = ({
             >
                 {items.map((item, idx) => (
                     <li
-                        className="w-[350px] max-w-full relative rounded-2xl border border-blue-100 flex-shrink-0 bg-white px-8 py-6 md:w-[450px] shadow-sm flex items-center gap-4"
-                        key={item.name + idx}
+                        className="w-[260px] sm:w-[280px] md:w-[300px] max-w-full relative rounded-2xl border border-green-100 flex-shrink-0 bg-white px-5 py-4 md:px-6 md:py-5 shadow-sm flex items-center gap-3 md:gap-4"
+                        key={item.title + idx}
                     >
-                        <div className="bg-blue-50 p-3 rounded-full shrink-0">
-                            {item.icon}
+                        <div className="bg-green-50 p-2 md:p-3 rounded-full shrink-0">
+                            {React.cloneElement(item.icon, { className: "w-5 h-5 md:w-7 md:h-7 text-green-600" })}
                         </div>
-                        <div>
-                            <span className="block text-lg font-bold text-blue-900 leading-[1.2]">
+                        <div className="min-w-0 flex-1">
+                            <span className="block text-sm md:text-base font-bold text-gray-900 leading-tight">
                                 {item.title}
                             </span>
-                            <span className="block text-sm text-gray-500 mt-1 font-normal">
+                            <span className="block text-xs md:text-sm text-gray-500 mt-0.5 font-normal leading-snug">
                                 {item.desc}
                             </span>
                         </div>
