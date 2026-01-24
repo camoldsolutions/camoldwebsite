@@ -50,11 +50,13 @@ const Website = () => {
         window.scrollTo(0, 0);
     };
 
+    const isTransparentPage = ['home', 'about', 'contact'].includes(activePage);
+
     return (
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
-            <nav className={`fixed w-full z-[100] transition-all duration-300 ${activePage === 'home' && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
+            <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${isTransparentPage && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
@@ -64,10 +66,10 @@ const Website = () => {
 
                         {/* Desktop Menu */}
                         <div className="hidden md:flex space-x-8 items-center">
-                            <NavButton label="Home" active={activePage === 'home'} onClick={() => navigateTo('home')} isTransparent={activePage === 'home' && !scrolled} />
-                            <NavButton label="About" active={activePage === 'about'} onClick={() => navigateTo('about')} isTransparent={activePage === 'home' && !scrolled} />
-                            <NavButton label="Certifications" active={activePage === 'certifications'} onClick={() => navigateTo('certifications')} isTransparent={activePage === 'home' && !scrolled} />
-                            <NavButton label="Contact" active={activePage === 'contact'} onClick={() => navigateTo('contact')} isTransparent={activePage === 'home' && !scrolled} />
+                            <NavButton label="Home" active={activePage === 'home'} onClick={() => navigateTo('home')} isTransparent={isTransparentPage && !scrolled} />
+                            <NavButton label="About" active={activePage === 'about'} onClick={() => navigateTo('about')} isTransparent={isTransparentPage && !scrolled} />
+                            <NavButton label="Certifications" active={activePage === 'certifications'} onClick={() => navigateTo('certifications')} isTransparent={isTransparentPage && !scrolled} />
+                            <NavButton label="Contact" active={activePage === 'contact'} onClick={() => navigateTo('contact')} isTransparent={isTransparentPage && !scrolled} />
 
                             <a
                                 href="tel:7073505074"
@@ -80,8 +82,8 @@ const Website = () => {
 
                         {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
-                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600 hover:text-blue-900 focus:outline-none p-2">
-                                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`${isTransparentPage && !scrolled && !isMenuOpen ? 'text-white' : 'text-gray-600 hover:text-blue-900'} focus:outline-none p-2`}>
+                                {isMenuOpen ? <X className="h-8 w-8 text-gray-600" /> : <Menu className="h-8 w-8" />}
                             </button>
                         </div>
                     </div>
@@ -104,7 +106,7 @@ const Website = () => {
             </nav>
 
             {/* Main Content Area - Swaps based on state */}
-            <main className={`flex-grow ${activePage === 'home' ? 'pt-0' : 'pt-24 md:pt-28'}`}>
+            <main className={`flex-grow ${isTransparentPage ? 'pt-0' : 'pt-24 md:pt-28'}`}>
                 {activePage === 'home' && <HomePage navigateTo={navigateTo} />}
                 {activePage === 'about' && <AboutPage navigateTo={navigateTo} />}
                 {activePage === 'certifications' && <CertificationsPage navigateTo={navigateTo} />}
@@ -323,7 +325,7 @@ const HomePage = ({ navigateTo }) => (
 
 const AboutPage = ({ navigateTo }) => (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <div className="bg-blue-900 py-16 md:py-24 relative overflow-hidden">
+        <div className="bg-blue-900 pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">About Us</h1>
@@ -450,7 +452,7 @@ const ContactPage = () => {
 
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-gray-50 min-h-[80vh]">
-            <div className="bg-blue-900 py-16 md:py-24">
+            <div className="bg-blue-900 pt-32 pb-16 md:pt-40 md:pb-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
                     <p className="text-xl text-blue-200 max-w-2xl mx-auto">Have concerns about mold? We're here to help.</p>
