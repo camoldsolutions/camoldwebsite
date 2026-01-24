@@ -289,14 +289,19 @@ const HomePage = ({ navigateTo }) => (
         <section className="py-20 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <div className="relative">
-                        <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-100 rounded-full opacity-50 z-0"></div>
-                        <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-100 rounded-full opacity-50 z-0"></div>
-                        <img
-                            src={ASSETS.vanImage}
-                            alt="CA Mold Solutions Van"
-                            className="relative z-10 w-full rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500"
-                        />
+                    <div className="relative flex justify-center items-center">
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50/50 rounded-full blur-3xl -z-10"></div>
+                        <div className="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2 hover:rotate-0 transition duration-500">
+                            <div className="transform translate-y-8">
+                                <CertificationBadge variant="CRMI" />
+                            </div>
+                            <div>
+                                <CertificationBadge variant="CMR" />
+                            </div>
+                            <div className="col-span-2 flex justify-center -mt-8">
+                                <CertificationBadge variant="CCMI" />
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">What sets us apart?</h2>
