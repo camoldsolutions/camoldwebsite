@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import ThreeCanvas from './components/ThreeCanvas';
+import Spores from './components/effects/Spores';
+import Flashlight from './components/effects/Flashlight';
+import WaveDivider from './components/effects/WaveDivider';
 import {
     Phone,
     Mail,
@@ -176,6 +180,13 @@ const HomePage = ({ navigateTo }) => (
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/70 to-blue-900/40"></div>
+
+                {/* 3D Spores & Flashlight Effect */}
+                <ThreeCanvas>
+                    <Spores count={150} color="#4ade80" />
+                    <Flashlight color="#ffffff" intensity={3} />
+                    <ambientLight intensity={0.5} />
+                </ThreeCanvas>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
