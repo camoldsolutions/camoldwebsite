@@ -420,12 +420,11 @@ const ContactPage = () => {
         setStatus(null);
         setErrorMessage('');
 
-        // TODO: Replace with your actual EmailJS keys
         // Service ID: service_q7ndb7q
-        // Template ID: YOUR_TEMPLATE_ID
-        // Public Key: YOUR_PUBLIC_KEY
+        // Template ID: template_826gypb
+        // Public Key: 0P4TyC9hTzEJ9nLvv
 
-        emailjs.sendForm('service_q7ndb7q', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+        emailjs.sendForm('service_q7ndb7q', 'template_826gypb', form.current, '0P4TyC9hTzEJ9nLvv')
             .then((result) => {
                 console.log(result.text);
                 setLoading(false);
