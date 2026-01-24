@@ -54,7 +54,7 @@ const Website = () => {
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-4 shadow-sm'}`}>
+            <nav className={`fixed w-full z-50 transition-all duration-300 ${activePage === 'home' && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
@@ -64,10 +64,10 @@ const Website = () => {
 
                         {/* Desktop Menu */}
                         <div className="hidden md:flex space-x-8 items-center">
-                            <NavButton label="Home" active={activePage === 'home'} onClick={() => navigateTo('home')} />
-                            <NavButton label="About" active={activePage === 'about'} onClick={() => navigateTo('about')} />
-                            <NavButton label="Certifications" active={activePage === 'certifications'} onClick={() => navigateTo('certifications')} />
-                            <NavButton label="Contact" active={activePage === 'contact'} onClick={() => navigateTo('contact')} />
+                            <NavButton label="Home" active={activePage === 'home'} onClick={() => navigateTo('home')} isTransparent={activePage === 'home' && !scrolled} />
+                            <NavButton label="About" active={activePage === 'about'} onClick={() => navigateTo('about')} isTransparent={activePage === 'home' && !scrolled} />
+                            <NavButton label="Certifications" active={activePage === 'certifications'} onClick={() => navigateTo('certifications')} isTransparent={activePage === 'home' && !scrolled} />
+                            <NavButton label="Contact" active={activePage === 'contact'} onClick={() => navigateTo('contact')} isTransparent={activePage === 'home' && !scrolled} />
 
                             <a
                                 href="tel:7073505074"
@@ -104,7 +104,7 @@ const Website = () => {
             </nav>
 
             {/* Main Content Area - Swaps based on state */}
-            <main className="flex-grow pt-24 md:pt-28">
+            <main className={`flex-grow ${activePage === 'home' ? 'pt-0' : 'pt-24 md:pt-28'}`}>
                 {activePage === 'home' && <HomePage navigateTo={navigateTo} />}
                 {activePage === 'about' && <AboutPage navigateTo={navigateTo} />}
                 {activePage === 'certifications' && <CertificationsPage navigateTo={navigateTo} />}
@@ -548,15 +548,28 @@ const ContactPage = () => {
 
 /* --- HELPER COMPONENTS --- */
 
-const NavButton = ({ label, active, onClick }) => (
-    <button
-        onClick={onClick}
-        className={`font-medium transition relative group ${active ? 'text-blue-900' : 'text-gray-600 hover:text-blue-900'}`}
-    >
-        {label}
-        <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-green-500 transform origin-left transition-transform duration-300 ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-    </button>
-);
+const NavButton = ({ label, active, onClick, isTransparent }) => {
+    // Determine text color based on state
+    // If transparent background: White text (unless active, then kept distinct or maybe green/white)
+    // If white background: Gray text, Blue on hover/active
+
+    let baseClasses = "font-medium transition relative group px-2 py-1 ";
+    if (isTransparent) {
+        baseClasses += active ? "text-white" : "text-blue-50 hover:text-white";
+    } else {
+        baseClasses += active ? "text-blue-900" : "text-gray-600 hover:text-blue-900";
+    }
+
+    return (
+        <button
+            onClick={onClick}
+            className={baseClasses}
+        >
+            {label}
+            <span className={`absolute -bottom-1 left-0 w-full h-0.5 transform origin-left transition-transform duration-300 ${isTransparent ? 'bg-white' : 'bg-green-500'} ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+        </button>
+    );
+};
 
 const MobileNavButton = ({ label, active, onClick }) => (
     <button
