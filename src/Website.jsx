@@ -5,6 +5,9 @@ import Spores from './components/effects/Spores';
 import Flashlight from './components/effects/Flashlight';
 import { BackgroundBeams } from "./components/ui/BackgroundBeams";
 import { InfiniteMovingCards } from "./components/ui/InfiniteMovingCards";
+import { WavyBackground } from "./components/ui/WavyBackground";
+import { BentoGrid, BentoGridItem } from "./components/ui/BentoGrid";
+import { FloatingNav } from "./components/ui/FloatingNavbar";
 import {
     Phone,
     Mail,
@@ -58,63 +61,14 @@ const Website = () => {
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
-            <nav style={{ zIndex: 9999 }} className={`fixed top-0 left-0 w-full transition-all duration-300 ${isTransparentPage && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center">
-                        {/* Logo */}
-                        <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigateTo('home')}>
-                            <img src={ASSETS.logo} alt="CA Mold Solutions" className="h-20 w-auto object-contain" />
-                        </div>
-
-                        {/* Desktop Menu */}
-                        <div className="hidden md:flex space-x-8 items-center">
-                            <NavButton label="Home" active={activePage === 'home'} onClick={() => navigateTo('home')} isTransparent={isTransparentPage && !scrolled} />
-                            <NavButton label="About" active={activePage === 'about'} onClick={() => navigateTo('about')} isTransparent={isTransparentPage && !scrolled} />
-                            <NavButton label="Certifications" active={activePage === 'certifications'} onClick={() => navigateTo('certifications')} isTransparent={isTransparentPage && !scrolled} />
-                            <NavButton label="Contact" active={activePage === 'contact'} onClick={() => navigateTo('contact')} isTransparent={isTransparentPage && !scrolled} />
-
-                            <a
-                                href="tel:7073505074"
-                                className="bg-blue-900 text-white px-5 py-2.5 rounded-full font-bold hover:bg-blue-800 transition flex items-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                            >
-                                <Phone className="w-4 h-4 mr-2" />
-                                (707) 350-5074
-                            </a>
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <div className="md:hidden flex items-center">
-                            <button
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className={`
-                                    focus:outline-none p-2 rounded-full transition-colors 
-                                    ${isTransparentPage && !scrolled && !isMenuOpen
-                                        ? 'text-white bg-black/20 backdrop-blur-sm hover:bg-black/30'
-                                        : 'text-blue-900 bg-gray-100 hover:bg-gray-200'
-                                    }
-                                `}
-                            >
-                                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Mobile Menu Dropdown */}
-                {isMenuOpen && (
-                    <div style={{ zIndex: 9998 }} className="md:hidden bg-white border-t border-gray-100 absolute left-0 w-full shadow-xl animate-in slide-in-from-top-5">
-                        <div className="px-4 pt-2 pb-6 space-y-2">
-                            <MobileNavButton label="Home" onClick={() => navigateTo('home')} active={activePage === 'home'} />
-                            <MobileNavButton label="About Us" onClick={() => navigateTo('about')} active={activePage === 'about'} />
-                            <MobileNavButton label="Certifications" onClick={() => navigateTo('certifications')} active={activePage === 'certifications'} />
-                            <MobileNavButton label="Contact" onClick={() => navigateTo('contact')} active={activePage === 'contact'} />
-                            <a href="tel:7073505074" className="block w-full text-center mt-4 bg-green-600 text-white px-3 py-3 rounded-md font-bold text-lg shadow-md">
-                                Call Now
-                            </a>
-                        </div>
-                    </div>
-                )}
-            </nav>
+            <FloatingNav
+                navItems={[
+                    { name: "Home", link: "#", onClick: () => navigateTo('home'), icon: <Menu className="h-4 w-4 text-neutral-500 dark:text-white" /> },
+                    { name: "About", link: "#", onClick: () => navigateTo('about'), icon: <Search className="h-4 w-4 text-neutral-500 dark:text-white" /> },
+                    { name: "Certifications", link: "#", onClick: () => navigateTo('certifications'), icon: <Award className="h-4 w-4 text-neutral-500 dark:text-white" /> },
+                    { name: "Contact", link: "#", onClick: () => navigateTo('contact'), icon: <Mail className="h-4 w-4 text-neutral-500 dark:text-white" /> },
+                ]}
+            />
 
             {/* Main Content Area - Swaps based on state */}
             <main className={`flex-grow ${isTransparentPage ? 'pt-0' : 'pt-24 md:pt-28'}`}>
@@ -184,53 +138,34 @@ const Website = () => {
 const HomePage = ({ navigateTo }) => (
     <div className="animate-in fade-in duration-500">
         {/* Hero Section */}
-        <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <img
-                    src={ASSETS.heroBg}
-                    alt="Mold Inspection"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/70 to-blue-900/40"></div>
-
-                <ThreeCanvas>
-                    <Spores count={400} color="#4ade80" />
-                    <Flashlight color="#ffffff" intensity={3} />
-                    <ambientLight intensity={0.5} />
-                </ThreeCanvas>
-
-                {/* Modern UI: Background Beams */}
-                <BackgroundBeams className="opacity-40" />
-            </div>
-
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-3xl">
-                    <div className="inline-flex items-center bg-green-500/20 backdrop-blur-md text-green-300 border border-green-500/30 rounded-full px-4 py-1 text-sm font-bold uppercase tracking-wider mb-6">
-                        <ShieldCheck className="w-4 h-4 mr-2" /> Serving All of California
-                    </div>
-                    <h1 className="text-3xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-sm">
-                        Certified Mold Inspection & <span className="text-green-400">Remediation</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-blue-50 mb-8 leading-relaxed max-w-2xl drop-shadow-md">
-                        Create a healthier indoor environment today. We combine advanced techniques with eco-friendly practices to safely remove mold from residential and commercial properties.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <button
-                            onClick={() => navigateTo('contact')}
-                            className="bg-green-600 hover:bg-green-700 text-white text-lg px-8 py-4 rounded-lg font-bold transition shadow-lg hover:shadow-green-500/20 flex items-center justify-center group"
-                        >
-                            Get a Free Quote <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <a
-                            href="tel:7073505074"
-                            className="bg-white text-blue-900 hover:bg-gray-100 text-lg px-8 py-4 rounded-lg font-bold transition shadow-lg flex items-center justify-center"
-                        >
-                            Call (707) 350-5074
-                        </a>
-                    </div>
+        {/* Hero Section - Wavy Background */}
+        <WavyBackground className="max-w-4xl mx-auto pb-40" waveOpacity={0.3} colors={['#38bdf8', '#818cf8', '#22d3ee']}>
+            <div className="p-4 md:p-8 relative z-10 text-center">
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full px-4 py-1 text-sm font-bold uppercase tracking-wider mb-6">
+                    <ShieldCheck className="w-4 h-4 mr-2" /> Serving All of California
+                </div>
+                <h1 className="mt-4 text-4xl md:text-7xl font-bold text-white leading-tight mb-8">
+                    Certified Mold Inspection <br /> & <span className="text-cyan-300">Remediation</span>
+                </h1>
+                <p className="mt-4 text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+                    Create a healthier indoor environment today. Advanced techniques, eco-friendly practices, and forensic-level diagnostics.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        onClick={() => navigateTo('contact')}
+                        className="bg-white hover:bg-gray-100 text-blue-900 text-lg px-8 py-4 rounded-full font-bold transition shadow-lg flex items-center justify-center group"
+                    >
+                        Get a Free Quote <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <a
+                        href="tel:7073505074"
+                        className="bg-blue-600/30 backdrop-blur-sm border border-blue-400/30 text-white hover:bg-blue-600/50 text-lg px-8 py-4 rounded-full font-bold transition shadow-lg flex items-center justify-center"
+                    >
+                        Call (707) 350-5074
+                    </a>
                 </div>
             </div>
-        </section>
+        </WavyBackground>
 
         {/* Quick Stats / Trust Bar - Replaced with Infinite Cards */}
         <div className="bg-white border-b border-gray-100 relative z-20 -mt-8 mx-0 md:mx-auto max-w-full rounded-none md:rounded-xl shadow-xl py-8 overflow-hidden">
@@ -267,52 +202,44 @@ const HomePage = ({ navigateTo }) => (
             />
         </div>
 
-        {/* Services Section */}
+        {/* Services Section - Bento Grid */}
         <section className="py-20 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
-                    <div className="w-20 h-1.5 bg-green-500 mx-auto rounded-full mb-6"></div>
-                    <p className="text-lg text-gray-600">
-                        Mold can have serious health implications and damage property if not properly addressed. We offer comprehensive solutions to restore your space.
-                    </p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                    <ServiceCard
-                        icon={<Search className="w-8 h-8 text-white" />}
-                        title="Inspection & Assessment"
-                        description="Thorough detection using advanced moisture meters to find hidden mold."
-                    />
-                    <ServiceCard
-                        icon={<ShieldCheck className="w-8 h-8 text-white" />}
-                        title="Containment"
-                        description="Isolating contaminated areas to prevent the spread of mold spores."
-                    />
-                    <ServiceCard
-                        icon={<Hammer className="w-8 h-8 text-white" />}
-                        title="Mold Removal"
-                        description="Safe and effective removal of mold colonies and affected materials."
-                    />
-                    <ServiceCard
-                        icon={<Droplets className="w-8 h-8 text-white" />}
-                        title="Cleaning & Disinfection"
-                        description="Deep cleaning of surfaces and air filtration to ensure a safe environment."
-                    />
-                    <ServiceCard
-                        icon={<CheckCircle className="w-8 h-8 text-white" />}
-                        title="Moisture Control"
-                        description="Identifying and fixing the source of moisture to prevent future growth."
-                    />
-                    <div className="bg-blue-900 rounded-xl p-8 flex flex-col justify-center items-center text-center text-white shadow-lg transform hover:-translate-y-1 transition duration-300">
-                        <h3 className="text-2xl font-bold mb-4">Need Help Now?</h3>
-                        <p className="mb-6 text-blue-100">Our experts are ready to assist you immediately.</p>
-                        <button onClick={() => navigateTo('contact')} className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-bold w-full transition">
-                            Contact Us
-                        </button>
-                    </div>
-                </div>
+            <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+                <h2 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4">Our Services</h2>
+                <p className="text-lg text-gray-600">
+                    Mold can have serious health implications. We offer comprehensive solutions to restore your space.
+                </p>
             </div>
+            <BentoGrid className="max-w-4xl mx-auto px-4">
+                <BentoGridItem
+                    title="Inspection & Assessment"
+                    description="Thorough detection using advanced moisture meters to find hidden mold."
+                    header={<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />}
+                    icon={<Search className="h-8 w-8 text-neutral-500" />}
+                    className="md:col-span-2"
+                />
+                <BentoGridItem
+                    title="Mold Removal"
+                    description="Safe and effective removal of mold colonies and affected materials."
+                    header={<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />}
+                    icon={<Hammer className="h-8 w-8 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+                <BentoGridItem
+                    title="Containment"
+                    description="Isolating contaminated areas to prevent the spread of mold spores."
+                    header={<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />}
+                    icon={<ShieldCheck className="h-8 w-8 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+                <BentoGridItem
+                    title="Cleaning & Disinfection"
+                    description="Deep cleaning of surfaces and air filtration to ensure a safe environment."
+                    header={<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100" />}
+                    icon={<Droplets className="h-8 w-8 text-neutral-500" />}
+                    className="md:col-span-2"
+                />
+            </BentoGrid>
         </section>
 
         {/* Why Choose Us Split Section */}
