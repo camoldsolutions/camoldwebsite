@@ -1,6 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-slate-800 bg-brand-light antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-brand-dark;
+  }
+}
 
 @keyframes fade-in {
   from {
@@ -54,8 +75,7 @@
 .fog-bg {
   position: relative;
   overflow: hidden;
-  background-color: #f9fafb;
-  /* gray-50 base */
+  @apply bg-brand-light;
 }
 
 .fog-bg::before {
@@ -67,34 +87,30 @@
   height: 200%;
   background-image:
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), transparent 60%),
-    radial-gradient(circle at 20% 80%, rgba(230, 255, 230, 0.4), transparent 50%),
-    /* Subtle green hint */
-    radial-gradient(circle at 80% 20%, rgba(220, 240, 255, 0.5), transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.05), transparent 50%),
+    /* Subtle emerald hint */
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.05), transparent 50%);
+  /* Subtle sky hint */
   opacity: 0.6;
-  animation: fog-flow 20s ease-in-out infinite;
+  animation: fog-flow 25s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Ensure content sits above fog */
 .fog-bg>* {
   position: relative;
   z-index: 1;
 }
 
-.animate-in {
-  animation-duration: 500ms;
-  animation-fill-mode: both;
+/* Scrollbar Polish */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.fade-in {
-  animation-name: fade-in;
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
 }
 
-.slide-in-from-bottom-4 {
-  animation-name: slide-in-from-bottom-4;
-}
-
-.slide-in-from-top-5 {
-  animation-name: slide-in-from-top-5;
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition;
 }
