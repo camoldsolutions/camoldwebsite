@@ -55,7 +55,7 @@ const Website = () => {
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${activePage === 'home' && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
+            <nav className={`fixed w-full z-[100] transition-all duration-300 ${activePage === 'home' && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
@@ -194,7 +194,7 @@ const HomePage = ({ navigateTo }) => (
                     <div className="inline-flex items-center bg-green-500/20 backdrop-blur-md text-green-300 border border-green-500/30 rounded-full px-4 py-1 text-sm font-bold uppercase tracking-wider mb-6">
                         <ShieldCheck className="w-4 h-4 mr-2" /> Serving All of California
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-sm">
+                    <h1 className="text-3xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-sm">
                         Certified Mold Inspection & <span className="text-green-400">Remediation</span>
                     </h1>
                     <p className="text-lg md:text-xl text-blue-50 mb-8 leading-relaxed max-w-2xl drop-shadow-md">
@@ -332,7 +332,7 @@ const AboutPage = ({ navigateTo }) => (
         <div className="bg-blue-900 py-16 md:py-24 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
+                <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">About Us</h1>
                 <p className="text-xl text-blue-200 max-w-2xl">Creating healthier indoor environments through expert remediation.</p>
             </div>
         </div>
@@ -376,7 +376,7 @@ const CertificationsPage = ({ navigateTo }) => (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="bg-gray-100 py-16 md:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4 text-center">Certifications & Standards</h1>
+                <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4 text-center">Certifications & Standards</h1>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto text-center">We adhere to the highest industry standards to ensure your safety.</p>
             </div>
         </div>
@@ -472,15 +472,15 @@ const ContactPage = () => {
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-gray-50 min-h-[80vh]">
             <div className="bg-blue-900 py-16 md:py-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
                     <p className="text-xl text-blue-200 max-w-2xl mx-auto">Have concerns about mold? We're here to help.</p>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 pb-20">
-                <div className="grid md:grid-cols-5 gap-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-16 pb-12 md:pb-20">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                     {/* Contact Info Card */}
-                    <div className="md:col-span-2 bg-blue-800 text-white rounded-2xl shadow-2xl p-8 md:p-12 h-full">
+                    <div className="md:col-span-2 bg-blue-800 text-white rounded-2xl shadow-2xl p-6 md:p-12 h-full">
                         <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
 
                         <div className="space-y-8">
@@ -507,7 +507,7 @@ const ContactPage = () => {
                     </div>
 
                     {/* Form */}
-                    <div className="md:col-span-3 bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+                    <div className="md:col-span-3 bg-white rounded-2xl shadow-2xl p-6 md:p-12">
                         <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
 
                         {status === 'success' && (
@@ -642,9 +642,9 @@ const ContactInfoItem = ({ icon, label, value, subval, href }) => (
         <div>
             <p className="text-xs text-blue-300 uppercase tracking-wider font-bold mb-1">{label}</p>
             {href ? (
-                <a href={href} className="text-xl font-bold hover:text-green-400 transition block">{value}</a>
+                <a href={href} className="text-lg md:text-xl font-bold hover:text-green-400 transition block break-words">{value}</a>
             ) : (
-                <span className="text-xl font-bold block">{value}</span>
+                <span className="text-lg md:text-xl font-bold block break-words">{value}</span>
             )}
             {subval && <span className="text-sm text-blue-200 block mt-1">{subval}</span>}
         </div>
