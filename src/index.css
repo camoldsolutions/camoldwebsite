@@ -6,6 +6,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -16,6 +17,7 @@
     transform: translateY(1rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -27,10 +29,57 @@
     transform: translateY(-1.25rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* --- Fog Animation --- */
+@keyframes fog-flow {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-2%, -2%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.fog-bg {
+  position: relative;
+  overflow: hidden;
+  background-color: #f9fafb;
+  /* gray-50 base */
+}
+
+.fog-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(230, 255, 230, 0.4), transparent 50%),
+    /* Subtle green hint */
+    radial-gradient(circle at 80% 20%, rgba(220, 240, 255, 0.5), transparent 50%);
+  opacity: 0.6;
+  animation: fog-flow 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content sits above fog */
+.fog-bg>* {
+  position: relative;
+  z-index: 1;
 }
 
 .animate-in {

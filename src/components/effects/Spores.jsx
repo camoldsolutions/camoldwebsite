@@ -64,8 +64,8 @@ const Spores = ({ count = 100, color = '#4ade80' }) => {
     return (
         <>
             <instancedMesh ref={mesh} args={[null, null, count]}>
-                <dodecahedronGeometry args={[0.05, 0]} /> {/* Small geometric spores */}
-                <meshPhongMaterial color={color} transparent opacity={0.6} />
+                <dodecahedronGeometry args={[0.08, 0]} /> {/* Larger spores */}
+                <meshPhongMaterial color={color} transparent opacity={0.8} />
             </instancedMesh>
         </>
     );

@@ -3,7 +3,6 @@ import emailjs from '@emailjs/browser';
 import ThreeCanvas from './components/ThreeCanvas';
 import Spores from './components/effects/Spores';
 import Flashlight from './components/effects/Flashlight';
-import WaveDivider from './components/effects/WaveDivider';
 import {
     Phone,
     Mail,
@@ -52,7 +51,7 @@ const Website = () => {
     };
 
     return (
-        <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col">
+        <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
             <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-4 shadow-sm'}`}>
@@ -183,7 +182,7 @@ const HomePage = ({ navigateTo }) => (
 
                 {/* 3D Spores & Flashlight Effect */}
                 <ThreeCanvas>
-                    <Spores count={150} color="#4ade80" />
+                    <Spores count={400} color="#4ade80" />
                     <Flashlight color="#ffffff" intensity={3} />
                     <ambientLight intensity={0.5} />
                 </ThreeCanvas>
@@ -216,8 +215,6 @@ const HomePage = ({ navigateTo }) => (
                     </div>
                 </div>
             </div>
-            {/* Wave Divider Transition */}
-            <WaveDivider position="bottom" color="#f9fafb" />
         </section>
 
         {/* Quick Stats / Trust Bar */}
