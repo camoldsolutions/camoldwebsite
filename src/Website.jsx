@@ -3,7 +3,6 @@ import emailjs from '@emailjs/browser';
 import ThreeCanvas from './components/ThreeCanvas';
 import Spores from './components/effects/Spores';
 import Flashlight from './components/effects/Flashlight';
-import CertificationBadge from './components/CertificationBadge';
 import {
     Phone,
     Mail,
@@ -289,19 +288,14 @@ const HomePage = ({ navigateTo }) => (
         <section className="py-20 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <div className="relative flex justify-center items-center">
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50/50 rounded-full blur-3xl -z-10"></div>
-                        <div className="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2 hover:rotate-0 transition duration-500">
-                            <div className="transform translate-y-8">
-                                <CertificationBadge variant="CRMI" />
-                            </div>
-                            <div>
-                                <CertificationBadge variant="CMR" />
-                            </div>
-                            <div className="col-span-2 flex justify-center -mt-8">
-                                <CertificationBadge variant="CCMI" />
-                            </div>
-                        </div>
+                    <div className="relative">
+                        <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-100 rounded-full opacity-50 z-0"></div>
+                        <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-100 rounded-full opacity-50 z-0"></div>
+                        <img
+                            src={ASSETS.vanImage}
+                            alt="CA Mold Solutions Van"
+                            className="relative z-10 w-full rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500"
+                        />
                     </div>
                     <div>
                         <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">What sets us apart?</h2>
@@ -382,50 +376,36 @@ const CertificationsPage = ({ navigateTo }) => (
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-                {/* Badge 1: CRMI */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transform hover:-translate-y-1 transition duration-300">
-                    <div className="mb-6">
-                        <CertificationBadge variant="CRMI" />
+                <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-blue-600 transform hover:-translate-y-1 transition duration-300">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <Award className="w-8 h-8 text-blue-600" />
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Certified Residential</h2>
-                    <p className="text-sm text-gray-500 text-center font-bold">Mold Inspector</p>
-                </div>
-
-                {/* Badge 2: CMR */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transform hover:-translate-y-1 transition duration-300 relative z-10 scale-105 border-4 border-blue-100">
-                    <div className="mb-6">
-                        <CertificationBadge variant="CMR" />
-                    </div>
-                    <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Certified</h2>
-                    <p className="text-sm text-gray-500 text-center font-bold">Mold Remediator</p>
-                </div>
-
-                {/* Badge 3: CCMI */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transform hover:-translate-y-1 transition duration-300">
-                    <div className="mb-6">
-                        <CertificationBadge variant="CCMI" />
-                    </div>
-                    <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Certified Commercial</h2>
-                    <p className="text-sm text-gray-500 text-center font-bold">Mold Inspector</p>
-                </div>
-            </div>
-
-            {/* Additional Info Section */}
-            <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div className="bg-blue-50 rounded-xl p-6">
-                    <h3 className="font-bold text-blue-900 mb-3 flex items-center"><Award className="w-5 h-5 mr-2" /> Industry Standards</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                        We adhere to the <strong>IICRC S520 Standard</strong> for Professional Mold Remediation. This ensures every job is performed with the highest level of safety and efficacy.
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">IICRC Certified</h2>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                        Our technicians are certified by the Institute of Inspection, Cleaning and Restoration Certification (IICRC). This demonstrates our commitment to professional excellence and ensures we follow the globally recognized standards for mold remediation.
                     </p>
+                    <ul className="space-y-2">
+                        <li className="flex items-center text-sm text-gray-500"><Check className="w-4 h-4 text-green-500 mr-2" /> Standard S520 Compliant</li>
+                        <li className="flex items-center text-sm text-gray-500"><Check className="w-4 h-4 text-green-500 mr-2" /> Verified Technical Training</li>
+                    </ul>
                 </div>
-                <div className="bg-green-50 rounded-xl p-6">
-                    <h3 className="font-bold text-green-900 mb-3 flex items-center"><ShieldCheck className="w-5 h-5 mr-2" /> EPA Guidelines</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                        Our procedures strictly follow <strong>EPA Guidelines</strong> for mold remediation in schools and commercial buildings, prioritizing occupant health.
+
+                <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-green-600 transform hover:-translate-y-1 transition duration-300">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <ShieldCheck className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">EPA Approved Procedures</h2>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                        We strictly follow Environmental Protection Agency (EPA) guidelines to protect your health and the environment during and after remediation. Our eco-friendly approach ensures that your property is safe for children and pets.
                     </p>
+                    <ul className="space-y-2">
+                        <li className="flex items-center text-sm text-gray-500"><Check className="w-4 h-4 text-green-500 mr-2" /> Safe Containment Protocols</li>
+                        <li className="flex items-center text-sm text-gray-500"><Check className="w-4 h-4 text-green-500 mr-2" /> Eco-Friendly Disinfectants</li>
+                    </ul>
                 </div>
+
             </div>
 
             <div className="mt-16 text-center">
