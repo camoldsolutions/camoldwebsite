@@ -3,6 +3,8 @@ import emailjs from '@emailjs/browser';
 import ThreeCanvas from './components/ThreeCanvas';
 import Spores from './components/effects/Spores';
 import Flashlight from './components/effects/Flashlight';
+import { BackgroundBeams } from "./components/ui/BackgroundBeams";
+import { InfiniteMovingCards } from "./components/ui/InfiniteMovingCards";
 import {
     Phone,
     Mail,
@@ -182,12 +184,14 @@ const HomePage = ({ navigateTo }) => (
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/70 to-blue-900/40"></div>
 
-                {/* 3D Spores & Flashlight Effect */}
                 <ThreeCanvas>
                     <Spores count={400} color="#4ade80" />
                     <Flashlight color="#ffffff" intensity={3} />
                     <ambientLight intensity={0.5} />
                 </ThreeCanvas>
+
+                {/* Modern UI: Background Beams */}
+                <BackgroundBeams className="opacity-40" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -219,22 +223,38 @@ const HomePage = ({ navigateTo }) => (
             </div>
         </section>
 
-        {/* Quick Stats / Trust Bar */}
-        <div className="bg-white border-b border-gray-100 relative z-20 -mt-8 mx-4 md:mx-auto max-w-6xl rounded-xl shadow-xl p-6 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TrustItem
-                icon={<Clock className="w-8 h-8 text-green-600" />}
-                title="24/7 Emergency Response"
-                desc="Always here when you need us most."
-            />
-            <TrustItem
-                icon={<Award className="w-8 h-8 text-green-600" />}
-                title="IICRC Certified"
-                desc="Industry standard certified technicians."
-            />
-            <TrustItem
-                icon={<CheckCircle className="w-8 h-8 text-green-600" />}
-                title="EPA Approved"
-                desc="Safe, eco-friendly procedures."
+        {/* Quick Stats / Trust Bar - Replaced with Infinite Cards */}
+        <div className="bg-white border-b border-gray-100 relative z-20 -mt-8 mx-0 md:mx-auto max-w-full rounded-none md:rounded-xl shadow-xl py-8 overflow-hidden">
+            <InfiniteMovingCards
+                items={[
+                    {
+                        title: "24/7 Emergency",
+                        desc: "Always here when you need us.",
+                        icon: <Clock className="w-8 h-8 text-green-600" />
+                    },
+                    {
+                        title: "IICRC Certified",
+                        desc: "Institute Verified Technicians",
+                        icon: <Award className="w-8 h-8 text-green-600" />
+                    },
+                    {
+                        title: "EPA Approved",
+                        desc: "Safe, Eco-Friendly Procedures",
+                        icon: <CheckCircle className="w-8 h-8 text-green-600" />
+                    },
+                    {
+                        title: "Licensed & Insured",
+                        desc: "Professional & Protected Service",
+                        icon: <ShieldCheck className="w-8 h-8 text-green-600" />
+                    },
+                    {
+                        title: "Advanced Tech",
+                        desc: "Moisture Meters & Thermal Imaging",
+                        icon: <Search className="w-8 h-8 text-green-600" />
+                    },
+                ]}
+                direction="left"
+                speed="normal"
             />
         </div>
 
