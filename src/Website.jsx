@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import {
     Phone,
     Mail,
@@ -407,87 +408,131 @@ const CertificationsPage = ({ navigateTo }) => (
     </div>
 );
 
-const ContactPage = () => (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-gray-50 min-h-[80vh]">
-        <div className="bg-blue-900 py-16 md:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
-                <p className="text-xl text-blue-200 max-w-2xl mx-auto">Have concerns about mold? We're here to help.</p>
+const ContactPage = () => {
+    const form = useRef();
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState(null); // 'success' | 'error' | null
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus(null);
+
+        // TODO: Replace with your actual EmailJS keys
+        // Service ID: service_q7ndb7q
+        // Template ID: YOUR_TEMPLATE_ID
+        // Public Key: YOUR_PUBLIC_KEY
+
+        emailjs.sendForm('service_q7ndb7q', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+            .then((result) => {
+                console.log(result.text);
+                setLoading(false);
+                setStatus('success');
+                e.target.reset();
+            }, (error) => {
+                console.log(error.text);
+                setLoading(false);
+                setStatus('error');
+            });
+    };
+
+    return (
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-gray-50 min-h-[80vh]">
+            <div className="bg-blue-900 py-16 md:py-24">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
+                    <p className="text-xl text-blue-200 max-w-2xl mx-auto">Have concerns about mold? We're here to help.</p>
+                </div>
             </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 pb-20">
-            <div className="grid md:grid-cols-5 gap-8">
-                {/* Contact Info Card */}
-                <div className="md:col-span-2 bg-blue-800 text-white rounded-2xl shadow-2xl p-8 md:p-12 h-full">
-                    <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 pb-20">
+                <div className="grid md:grid-cols-5 gap-8">
+                    {/* Contact Info Card */}
+                    <div className="md:col-span-2 bg-blue-800 text-white rounded-2xl shadow-2xl p-8 md:p-12 h-full">
+                        <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
 
-                    <div className="space-y-8">
-                        <ContactInfoItem
-                            icon={<Phone className="w-6 h-6 text-green-400" />}
-                            label="Phone"
-                            value="(707) 350-5074"
-                            subval="24/7 Emergency Response"
-                            href="tel:7073505074"
-                        />
-                        <ContactInfoItem
-                            icon={<Mail className="w-6 h-6 text-green-400" />}
-                            label="Email"
-                            value="contact@camoldsolutions.com"
-                            href="mailto:contact@camoldsolutions.com"
-                        />
-                        <ContactInfoItem
-                            icon={<MapPin className="w-6 h-6 text-green-400" />}
-                            label="Service Area"
-                            value="California"
-                            subval="Serving Residential & Commercial"
-                        />
+                        <div className="space-y-8">
+                            <ContactInfoItem
+                                icon={<Phone className="w-6 h-6 text-green-400" />}
+                                label="Phone"
+                                value="(707) 350-5074"
+                                subval="24/7 Emergency Response"
+                                href="tel:7073505074"
+                            />
+                            <ContactInfoItem
+                                icon={<Mail className="w-6 h-6 text-green-400" />}
+                                label="Email"
+                                value="contact@camoldsolutions.com"
+                                href="mailto:contact@camoldsolutions.com"
+                            />
+                            <ContactInfoItem
+                                icon={<MapPin className="w-6 h-6 text-green-400" />}
+                                label="Service Area"
+                                value="California"
+                                subval="Serving Residential & Commercial"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Form */}
+                    <div className="md:col-span-3 bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+
+                        {status === 'success' && (
+                            <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                                <p className="font-bold">Success!</p>
+                                <p>Your message has been sent successfully. We'll be in touch soon.</p>
+                            </div>
+                        )}
+
+                        {status === 'error' && (
+                            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                                <p className="font-bold">Error</p>
+                                <p>Something went wrong. Please try again or call us directly.</p>
+                            </div>
+                        )}
+
+                        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">First Name</label>
+                                    <input type="text" name="user_firstname" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="John" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Last Name</label>
+                                    <input type="text" name="user_lastname" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="Doe" />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Phone</label>
+                                    <input type="tel" name="user_phone" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="(555) 555-5555" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
+                                    <input type="email" name="user_email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="john@example.com" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
+                                <textarea name="message" rows="4" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="How can we help you?"></textarea>
+                            </div>
+
+                            <button type="submit" disabled={loading} className={`w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex justify-center items-center ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                {loading ? 'Sending...' : 'Submit Request'}
+                            </button>
+                            <p className="text-sm text-gray-400 text-center">
+                                We respect your privacy. Your information is never shared.
+                            </p>
+                        </form>
                     </div>
                 </div>
-
-                {/* Form */}
-                <div className="md:col-span-3 bg-white rounded-2xl shadow-2xl p-8 md:p-12">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">First Name</label>
-                                <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="John" />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Last Name</label>
-                                <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="Doe" />
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Phone</label>
-                                <input type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="(555) 555-5555" />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                                <input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="john@example.com" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
-                            <textarea rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition" placeholder="How can we help you?"></textarea>
-                        </div>
-
-                        <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex justify-center items-center">
-                            Submit Request
-                        </button>
-                        <p className="text-sm text-gray-400 text-center">
-                            We respect your privacy. Your information is never shared.
-                        </p>
-                    </form>
-                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 /* --- HELPER COMPONENTS --- */
 
