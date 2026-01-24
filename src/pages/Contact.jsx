@@ -67,9 +67,9 @@ const Contact = () => {
             </div>
 
             <Section variant="light" className="-mt-24 pt-0 md:pt-0 relative z-30">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl rounded-3xl overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Contact Info Card (Left) */}
-                    <div className="lg:col-span-5 bg-[#0B1F3F] text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between">
+                    <div className="lg:col-span-5 bg-[#0B1F3F] text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between rounded-3xl shadow-xl h-full">
                         <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500 rounded-full filter blur-[100px] opacity-10 pointer-events-none"></div>
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-[80px] opacity-10 pointer-events-none"></div>
 
@@ -108,7 +108,7 @@ const Contact = () => {
                     </div>
 
                     {/* Form (Right) */}
-                    <div className="lg:col-span-7 bg-white p-10 md:p-14">
+                    <div className="lg:col-span-7 bg-white p-10 md:p-14 rounded-3xl shadow-xl h-full">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2">Send us a message</h2>
                         <p className="text-gray-500 mb-10">Fill out the form below and we'll get back to you within 24 hours.</p>
 
