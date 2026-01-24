@@ -12,14 +12,12 @@ import {
     Check,
     Phone
 } from 'lucide-react';
-import { InfiniteMovingCards } from "../components/ui/InfiniteMovingCards";
 import { ASSETS } from '../lib/constants';
 import Section from '../components/ui/Section';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
 import ThreeCanvas from '../components/ThreeCanvas';
 import Spores from '../components/effects/Spores';
 import Flashlight from '../components/effects/Flashlight';
+import Button from '../components/ui/Button';
 
 const ServiceCard = ({ icon, title, description }) => (
     <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-green-200 h-full flex flex-col">
@@ -42,11 +40,21 @@ const FeaturePoint = ({ text }) => (
     </div>
 );
 
+const TrustCard = ({ icon, title, desc }) => (
+    <div className="bg-white rounded-xl p-6 shadow-xl border-b-4 border-green-500 h-full flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+        <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-4 text-green-600">
+            {icon}
+        </div>
+        <h3 className="font-bold text-gray-900 text-lg mb-2 leading-tight">{title}</h3>
+        <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+    </div>
+);
+
 const Home = ({ navigateTo }) => {
     return (
-        <div className="animate-in fade-in duration-700">
-{/* Hero Section */}
-            <div className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
+        <div className="animate-in fade-in duration-700 font-sans">
+            {/* Hero Section */}
+            <div className="relative min-h-[700px] flex items-center justify-center overflow-hidden">
                 {/* Hero Image Background */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -56,8 +64,8 @@ const Home = ({ navigateTo }) => {
                     />
                 </div>
 
-                {/* Dark Overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10"></div>
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/60 z-10"></div>
 
                 {/* Subtle 3D Effects */}
                 <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -67,70 +75,62 @@ const Home = ({ navigateTo }) => {
                     </ThreeCanvas>
                 </div>
 
-<div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+                <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center py-20">
                     <div className="max-w-4xl mx-auto">
-                        <div className="inline-flex items-center bg-green-600/90 backdrop-blur-sm text-white border border-green-500/30 rounded-full px-5 py-2 text-sm font-bold uppercase tracking-wider mb-8 animate-slide-up shadow-lg">
-                            <ShieldCheck className="w-4 h-4 mr-2" /> Licensed & IICRC Certified
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-2xl font-display tracking-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                        <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-2xl tracking-tight">
                             Professional Mold <br />Inspection & <span className="text-green-400">Remediation</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto animate-slide-up drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
+                        <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-lg">
                             Protecting your health and property with expert mold detection, testing, and removal services throughout California.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-<button
+
+                        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                            <button
                                 onClick={() => navigateTo('contact')}
-                                className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                className="bg-[#4C9F10] hover:bg-[#3e850c] text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-lg uppercase tracking-wide"
                             >
-                                Get a Free Quote <ArrowRight className="w-5 h-5 ml-2 inline" />
+                                Consultations
+                            </button>
+                            <button
+                                onClick={() => window.location.href = 'tel:7073505074'}
+                                className="bg-[#0B1F3F] hover:bg-[#1a3a6e] text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-lg flex items-center gap-3"
+                            >
+                                <Phone className="w-5 h-5 text-white" /> (707) 350-5074
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-{/* Quick Stats / Trust Bar */}
-            <div className="relative z-20 -mt-12 md:-mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-                <div className="bg-white/95 backdrop-blur-xl border border-green-100 rounded-2xl shadow-2xl overflow-hidden py-6 md:py-8">
-                    <InfiniteMovingCards
-                        items={[
-                            {
-                                title: "24/7 Emergency Response",
-                                desc: "Available when you need us most",
-                                icon: <Clock className="w-8 h-8 text-green-600" />
-                            },
-                            {
-                                title: "IICRC Certified",
-                                desc: "Industry-certified technicians",
-                                icon: <Award className="w-8 h-8 text-green-600" />
-                            },
-                            {
-                                title: "Mold Testing & Lab Analysis",
-                                desc: "Professional laboratory results",
-                                icon: <Search className="w-8 h-8 text-green-600" />
-                            },
-                            {
-                                title: "Thermal Imaging",
-                                desc: "Advanced moisture detection",
-                                icon: <CheckCircle className="w-8 h-8 text-green-600" />
-                            },
-                            {
-                                title: "Licensed & Insured",
-                                desc: "Fully protected service",
-                                icon: <ShieldCheck className="w-8 h-8 text-green-600" />
-                            },
-                        ]}
-                        direction="left"
-                        speed="normal"
-                        className="bg-transparent"
+            {/* Static Trust Bar (Grid) */}
+            <div className="relative z-30 -mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <TrustCard
+                        icon={<Clock className="w-6 h-6" />}
+                        title="24/7 Emergency Response"
+                        desc="Available when you need us most"
+                    />
+                    <TrustCard
+                        icon={<Award className="w-6 h-6" />}
+                        title="IICRC Certified"
+                        desc="Industry-certified technicians"
+                    />
+                    <TrustCard
+                        icon={<Search className="w-6 h-6" />}
+                        title="Mold Testing & Lab Analysis"
+                        desc="Professional laboratory results"
+                    />
+                    <TrustCard
+                        icon={<CheckCircle className="w-6 h-6" />}
+                        title="Thermal Imaging"
+                        desc="Advanced moisture detection"
                     />
                 </div>
             </div>
 
             {/* Services Section */}
             <Section variant="light">
-<div className="text-center max-w-3xl mx-auto mb-20">
+                <div className="text-center max-w-3xl mx-auto mb-20">
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Professional Mold Services</h2>
                     <div className="w-24 h-1.5 bg-green-600 mx-auto rounded-full mb-8"></div>
                     <p className="text-xl text-gray-600 leading-relaxed">
@@ -139,7 +139,7 @@ const Home = ({ navigateTo }) => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-<ServiceCard
+                    <ServiceCard
                         icon={<Search />}
                         title="Mold Inspection & Testing"
                         description="Comprehensive visual inspection with air sampling, surface testing, and laboratory analysis to identify mold types and concentrations."
@@ -165,7 +165,7 @@ const Home = ({ navigateTo }) => {
                         description="Verification testing to ensure mold levels are safe and your property is fully restored to healthy conditions."
                     />
 
-{/* CTA Card */}
+                    {/* CTA Card */}
                     <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 flex flex-col justify-center items-center text-center text-white shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition duration-300">
                         <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition duration-300"></div>
                         <div className="relative z-10">
@@ -174,8 +174,8 @@ const Home = ({ navigateTo }) => {
                             </div>
                             <h3 className="text-2xl font-bold mb-4 font-display">Emergency Mold Service?</h3>
                             <p className="mb-8 text-white/90">Call now for immediate assistance with mold issues. Available 24/7.</p>
-                            <button 
-                                onClick={() => window.location.href = 'tel:7073505074'} 
+                            <button
+                                onClick={() => window.location.href = 'tel:7073505074'}
                                 className="bg-white text-green-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 w-full"
                             >
                                 Call (707) 350-5074
