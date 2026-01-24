@@ -216,6 +216,8 @@ const HomePage = ({ navigateTo }) => (
                     </div>
                 </div>
             </div>
+            {/* Wave Divider Transition */}
+            <WaveDivider position="bottom" color="#f9fafb" />
         </section>
 
         {/* Quick Stats / Trust Bar */}
