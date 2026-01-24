@@ -66,7 +66,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <Section variant="light" className="-mt-24 pt-0 md:pt-0 relative z-30">
+            <Section variant="light" className="-mt-10 md:-mt-24 pt-0 md:pt-0 relative z-30">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Contact Info Card (Left) */}
                     <div className="lg:col-span-5 bg-[#0B1F3F] text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between rounded-3xl shadow-xl h-full">
