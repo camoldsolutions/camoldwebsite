@@ -56,7 +56,7 @@ const Website = () => {
                     <div className="flex justify-between items-center">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigateTo('home')}>
-                            <img src={ASSETS.logo} alt="CA Mold Solutions" className="h-12 w-auto object-contain" />
+                            <img src={ASSETS.logo} alt="CA Mold Solutions" className="h-20 w-auto object-contain" />
                         </div>
 
                         {/* Desktop Menu */}
