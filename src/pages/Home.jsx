@@ -60,7 +60,7 @@ const Home = ({ navigateTo }) => {
                     <img
                         src={ASSETS.heroImage}
                         alt="Professional Mold Inspection"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                     />
                 </div>
 
