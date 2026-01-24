@@ -74,8 +74,8 @@ const Contact = () => {
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-[80px] opacity-10 pointer-events-none"></div>
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-                            <p className="text-slate-400 mb-12 text-lg">We'd love to hear from you. Our friendly team is always here to chat.</p>
+                            <h2 className="text-3xl font-bold mb-2 text-white">Get in Touch</h2>
+                            <p className="text-slate-200 mb-12 text-lg">We'd love to hear from you. Our friendly team is always here to chat.</p>
 
                             <div className="space-y-8">
                                 <ContactInfoItem
