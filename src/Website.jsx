@@ -412,11 +412,13 @@ const ContactPage = () => {
     const form = useRef();
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null); // 'success' | 'error' | null
+    const [errorMessage, setErrorMessage] = useState('');
 
     const sendEmail = (e) => {
         e.preventDefault();
         setLoading(true);
         setStatus(null);
+        setErrorMessage('');
 
         // TODO: Replace with your actual EmailJS keys
         // Service ID: service_q7ndb7q
@@ -433,6 +435,7 @@ const ContactPage = () => {
                 console.log(error.text);
                 setLoading(false);
                 setStatus('error');
+                setErrorMessage(error.text || 'Something went wrong. Please try again.');
             });
     };
 
