@@ -58,7 +58,7 @@ const Website = () => {
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col fog-bg">
 
             {/* Navigation */}
-            <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${isTransparentPage && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
+            <nav style={{ zIndex: 9999 }} className={`fixed top-0 left-0 w-full transition-all duration-300 ${isTransparentPage && !scrolled ? 'bg-transparent py-6' : 'bg-white shadow-lg py-2'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
@@ -84,8 +84,17 @@ const Website = () => {
 
                         {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
-                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`${isTransparentPage && !scrolled && !isMenuOpen ? 'text-white' : 'text-gray-600 hover:text-blue-900'} focus:outline-none p-2`}>
-                                {isMenuOpen ? <X className="h-8 w-8 text-gray-600" /> : <Menu className="h-8 w-8" />}
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className={`
+                                    focus:outline-none p-2 rounded-full transition-colors 
+                                    ${isTransparentPage && !scrolled && !isMenuOpen
+                                        ? 'text-white bg-black/20 backdrop-blur-sm hover:bg-black/30'
+                                        : 'text-blue-900 bg-gray-100 hover:bg-gray-200'
+                                    }
+                                `}
+                            >
+                                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
                             </button>
                         </div>
                     </div>
@@ -93,7 +102,7 @@ const Website = () => {
 
                 {/* Mobile Menu Dropdown */}
                 {isMenuOpen && (
-                    <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl animate-in slide-in-from-top-5">
+                    <div style={{ zIndex: 9998 }} className="md:hidden bg-white border-t border-gray-100 absolute left-0 w-full shadow-xl animate-in slide-in-from-top-5">
                         <div className="px-4 pt-2 pb-6 space-y-2">
                             <MobileNavButton label="Home" onClick={() => navigateTo('home')} active={activePage === 'home'} />
                             <MobileNavButton label="About Us" onClick={() => navigateTo('about')} active={activePage === 'about'} />
