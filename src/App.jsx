@@ -14,6 +14,16 @@ const App = () => {
         window.scrollTo(0, 0);
     };
 
+    React.useEffect(() => {
+        const titles = {
+            home: 'CA Mold Solutions | Professional Mold Inspection & Remediation',
+            about: 'About Us | CA Mold Solutions',
+            certifications: 'Certifications & Standards | CA Mold Solutions',
+            contact: 'Contact Us | CA Mold Solutions'
+        };
+        document.title = titles[activePage] || 'CA Mold Solutions';
+    }, [activePage]);
+
     const isTransparentPage = activePage === 'home';
 
     return (
