@@ -7,18 +7,18 @@ import Button from '../components/ui/Button';
 import { ASSETS } from '../lib/constants';
 
 const ContactInfoItem = ({ icon, label, value, subval, href }) => (
-    <div className="flex items-start group p-4 rounded-xl hover:bg-white/5 transition duration-300">
-        <div className="bg-emerald-500/10 p-4 rounded-full mr-4 flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300">
-            {React.cloneElement(icon, { className: "w-6 h-6 text-emerald-400" })}
+    <div className="flex items-start group p-3 rounded-xl hover:bg-white/5 transition duration-300">
+        <div className="bg-emerald-500/10 p-3 rounded-full mr-3 flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300">
+            {React.cloneElement(icon, { className: "w-5 h-5 text-emerald-400" })}
         </div>
-        <div className="min-w-0">
-            <p className="text-xs text-emerald-400 uppercase tracking-widest font-bold mb-1 opacity-80">{label}</p>
+        <div className="min-w-0 flex-grow pt-0.5">
+            <p className="text-[10px] text-emerald-400 uppercase tracking-widest font-bold mb-0.5 opacity-80">{label}</p>
             {href ? (
-                <a href={href} className="text-base md:text-xl font-bold text-white hover:text-emerald-400 transition block break-all">{value}</a>
+                <a href={href} className="text-sm md:text-lg font-bold text-white hover:text-emerald-400 transition block truncate">{value}</a>
             ) : (
-                <span className="text-base md:text-xl font-bold text-white block break-words">{value}</span>
+                <span className="text-sm md:text-lg font-bold text-white block truncate">{value}</span>
             )}
-            {subval && <span className="text-sm text-slate-400 block mt-1 font-medium">{subval}</span>}
+            {subval && <span className="text-xs text-slate-400 block mt-0.5 font-medium">{subval}</span>}
         </div>
     </div>
 );
