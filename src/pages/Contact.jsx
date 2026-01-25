@@ -8,15 +8,15 @@ import { ASSETS } from '../lib/constants';
 
 const ContactInfoItem = ({ icon, label, value, subval, href }) => (
     <div className="flex items-start group p-4 rounded-xl hover:bg-white/5 transition duration-300">
-        <div className="bg-emerald-500/10 p-4 rounded-full mr-5 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300">
+        <div className="bg-emerald-500/10 p-4 rounded-full mr-4 flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300">
             {React.cloneElement(icon, { className: "w-6 h-6 text-emerald-400" })}
         </div>
-        <div>
+        <div className="min-w-0">
             <p className="text-xs text-emerald-400 uppercase tracking-widest font-bold mb-1 opacity-80">{label}</p>
             {href ? (
-                <a href={href} className="text-xl font-bold text-white hover:text-emerald-400 transition block break-words">{value}</a>
+                <a href={href} className="text-base md:text-xl font-bold text-white hover:text-emerald-400 transition block break-all">{value}</a>
             ) : (
-                <span className="text-xl font-bold text-white block break-words">{value}</span>
+                <span className="text-base md:text-xl font-bold text-white block break-words">{value}</span>
             )}
             {subval && <span className="text-sm text-slate-400 block mt-1 font-medium">{subval}</span>}
         </div>
