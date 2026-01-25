@@ -43,7 +43,7 @@ const Navbar = ({ activePage, navigateTo }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const isTransparentPage = ['home', 'about', 'contact'].includes(activePage);
+    const isTransparentPage = activePage === 'home';
 
     // Auto-close menu when navigating
     const handleNavigation = (page) => {
@@ -55,7 +55,7 @@ const Navbar = ({ activePage, navigateTo }) => {
         <nav style={{ zIndex: 9999 }} className={`fixed top-0 left-0 w-full transition-all duration-300 ${isTransparentPage && !scrolled ? 'bg-transparent py-6' : 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-gray-100'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
-{/* Logo */}
+                    {/* Logo */}
                     <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavigation('home')}>
                         <img src={ASSETS.logo} alt="CA Mold Solutions" className="h-16 w-auto object-contain" />
                     </div>

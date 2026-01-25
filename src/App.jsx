@@ -14,7 +14,7 @@ const App = () => {
         window.scrollTo(0, 0);
     };
 
-    const isTransparentPage = ['home', 'about', 'contact'].includes(activePage);
+    const isTransparentPage = activePage === 'home';
 
     return (
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col">
