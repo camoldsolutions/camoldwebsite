@@ -52,7 +52,7 @@ const Contact = () => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50 min-h-screen font-sans">
             {/* Header */}
-            <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+            <div className="relative pt-32 pb-28 md:pt-48 md:pb-56 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img src={ASSETS.heroImage} alt="Contact CA Mold Solutions" className="w-full h-full object-cover object-top filter brightness-50" />
                 </div>
@@ -66,7 +66,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <Section variant="light" className="-mt-6 md:-mt-8 pt-0 md:pt-0 relative z-30">
+            <Section variant="light" className="-mt-4 md:-mt-8 relative z-30">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Contact Info Card (Left) */}
                     <div className="lg:col-span-5 bg-[#0B1F3F] text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between rounded-3xl shadow-xl h-full">
