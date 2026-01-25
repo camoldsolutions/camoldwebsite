@@ -8,7 +8,7 @@ const Certifications = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Header */}
-            <div className="bg-brand-light py-20 md:py-32 border-b border-slate-200">
+            <div className="bg-brand-light py-16 md:py-24 border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-6xl font-bold text-brand-dark mb-6 font-display">Certifications & Standards</h1>
                     <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -18,7 +18,7 @@ const Certifications = ({ navigateTo }) => {
             </div>
 
             <Section variant="white">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
                     <Card className="border-t-4 border-t-blue-600 p-10" hover>
                         <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-8 mx-auto md:mx-0">

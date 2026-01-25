@@ -24,7 +24,7 @@ const Section = ({
         <section
             id={id}
             className={cn(
-                "py-20 md:py-28 relative overflow-hidden",
+                "py-16 md:py-24 relative overflow-hidden",
                 variants[variant],
                 className
             )}

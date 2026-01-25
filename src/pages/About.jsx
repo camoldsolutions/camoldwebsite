@@ -7,7 +7,7 @@ const About = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Hero */}
-            <div className="bg-brand-dark pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+            <div className="bg-brand-dark pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-emerald-900/30"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
@@ -19,7 +19,7 @@ const About = ({ navigateTo }) => {
             </div>
 
             <Section variant="white">
-                <div className="grid md:grid-cols-2 gap-16 items-start">
+                <div className="grid md:grid-cols-2 gap-12 items-start">
                     <div>
                         <h2 className="text-3xl font-bold text-brand-dark mb-8 font-display">Our Mission</h2>
                         <div className="prose prose-lg text-slate-600 leading-relaxed font-sans">

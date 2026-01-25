@@ -103,8 +103,8 @@ const Home = ({ navigateTo }) => {
             </div>
 
             {/* Static Trust Bar (Grid) */}
-            <div className="relative z-30 -mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="relative z-30 -mt-6 md:-mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <TrustCard
                         icon={<Clock className="w-6 h-6" />}
                         title="24/7 Emergency Response"
@@ -130,7 +130,7 @@ const Home = ({ navigateTo }) => {
 
             {/* Services Section */}
             <Section variant="light">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Professional Mold Services</h2>
                     <div className="w-24 h-1.5 bg-green-600 mx-auto rounded-full mb-8"></div>
                     <p className="text-xl text-gray-600 leading-relaxed">
