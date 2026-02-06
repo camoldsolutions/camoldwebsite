@@ -30,14 +30,14 @@ const LocationPage = () => {
 
             {/* Hero Section */}
             <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-brand-dark">
-                <div className="absolute inset-0 z-0 opacity-20">
-                    <img src={ASSETS.heroImage} alt={`${locationData.name} Mold Services`} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 z-0 opacity-20" aria-hidden="true">
+                    <img src={ASSETS.heroImage} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-primary/20 z-10"></div>
 
                 <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="inline-flex items-center bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20">
-                        <MapPin className="w-4 h-4 text-brand-primary mr-2" />
+                        <MapPin className="w-4 h-4 text-brand-primary mr-2" aria-hidden="true" />
                         <span className="text-white font-medium">Serving {locationData.name}, {locationData.state}</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight drop-shadow-xl">
@@ -51,7 +51,7 @@ const LocationPage = () => {
                             Get a Free Quote
                         </Button>
                         <Button onClick={() => window.location.href = 'tel:7073505074'} variant="outline" className="text-white border-white hover:bg-white/10">
-                            <Phone className="w-4 h-4 mr-2" /> (707) 350-5074
+                            <Phone className="w-4 h-4 mr-2" aria-hidden="true" /> (707) 350-5074
                         </Button>
                     </div>
                 </div>
@@ -71,14 +71,14 @@ const LocationPage = () => {
 
                         <div className="space-y-4">
                             <div className="flex items-start">
-                                <CheckCircle className="w-6 h-6 text-brand-primary mr-3 flex-shrink-0" />
+                                <CheckCircle className="w-6 h-6 text-brand-primary mr-3 flex-shrink-0" aria-hidden="true" />
                                 <div>
                                     <h4 className="font-bold text-gray-900">Local Rapid Response</h4>
                                     <p className="text-sm text-gray-500">We can be at your {locationData.name} property in under 60 minutes for emergencies.</p>
                                 </div>
                             </div>
                             <div className="flex items-start">
-                                <CheckCircle className="w-6 h-6 text-brand-primary mr-3 flex-shrink-0" />
+                                <CheckCircle className="w-6 h-6 text-brand-primary mr-3 flex-shrink-0" aria-hidden="true" />
                                 <div>
                                     <h4 className="font-bold text-gray-900">Zip Code Specific Knowledge</h4>
                                     <p className="text-sm text-gray-500">Familiar with common building issues in {locationData.zipCodes[0]} area.</p>
@@ -92,23 +92,23 @@ const LocationPage = () => {
                             <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Services in {locationData.name}</h3>
                             <ul className="space-y-3">
                                 <li className="flex items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
-                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" />
+                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" aria-hidden="true" />
                                     <span className="font-medium text-gray-700">Residential Mold Inspection</span>
                                 </li>
                                 <li className="flex items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
-                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" />
+                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" aria-hidden="true" />
                                     <span className="font-medium text-gray-700">Commercial Remediation</span>
                                 </li>
                                 <li className="flex items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
-                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" />
+                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" aria-hidden="true" />
                                     <span className="font-medium text-gray-700">Black Mold Removal</span>
                                 </li>
                                 <li className="flex items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
-                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" />
+                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" aria-hidden="true" />
                                     <span className="font-medium text-gray-700">Attic & Crawlspace Cleaning</span>
                                 </li>
                                 <li className="flex items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
-                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" />
+                                    <ShieldCheck className="w-5 h-5 text-brand-primary mr-3" aria-hidden="true" />
                                     <span className="font-medium text-gray-700">Moisture Detection & Drying</span>
                                 </li>
                             </ul>
