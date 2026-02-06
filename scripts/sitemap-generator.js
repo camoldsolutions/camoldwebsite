@@ -9,7 +9,8 @@ const staticRoutes = [
     '',
     '/about',
     '/certifications',
-    '/contact'
+    '/contact',
+    '/google6dda8d96c610d515.html'
 ];
 
 const generateSitemap = () => {

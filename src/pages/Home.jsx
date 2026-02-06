@@ -150,6 +150,36 @@ const Home = ({ navigateTo }) => {
                         title="Mold Inspection & Testing"
                         description="Comprehensive visual inspection with air sampling, surface testing, and laboratory analysis to identify mold types and concentrations."
                     />
+                    {/*
+### Check Meta Tags
+1. Install a browser extension like "SEO META in 1 CLICK" or just right-click -> "Inspect".
+2. Look at the `<head>` section.
+3. Verify the `<title>` matches the page content.
+
+## Measuring SEO Success
+
+Since SEO results are not instant, you should track performance over the next 2-4 weeks using these tools:
+
+### 1. Google Search Console (Crucial)
+This is the most accurate way to see if your "Top of results" goal is being met.
+- **Register your site**: If you haven't, go to [Google Search Console](https://search.console.google.com/).
+- **Submit Sitemap**: Provide your new sitemap URL: `https://camoldsolutions.com/sitemap.xml`.
+- **Track Keywords**: Monitor your "Ranking Position" for keywords like "mold inspection Torrance".
+
+### 2. Chrome Lighthouse (Technical Score)
+To test your "SEO Score":
+1. Open your website in Chrome.
+2. Right-click and select **Inspect**.
+3. Go to the **Lighthouse** tab at the top.
+4. Select "SEO" (and "Performance" if you like) and click **Analyze page load**.
+5. You should aim for a score of **90-100**.
+
+### 3. Local Search Testing
+Because Google shows results based on *your* location, test your site's ranking by:
+- Using "Incognito Mode".
+- Searching for: `mold services Torrance CA` or `mold remediation Long Beach`.
+- Checking if your new location pages (e.g., `/locations/torrance`) appear in the results.
+*/}
                     <ServiceCard
                         icon={<ShieldCheck />}
                         title="Moisture Detection"
