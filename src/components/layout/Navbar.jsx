@@ -18,6 +18,7 @@ const NavLink = ({ to, label, isTransparent }) => {
         <Link
             to={to}
             className={baseClasses}
+            aria-current={active ? 'page' : undefined}
         >
             {label}
             <span className={`absolute -bottom-1 left-0 w-full h-0.5 transform origin-left transition-transform duration-300 ${isTransparent ? 'bg-white' : 'bg-brand-primary'} ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -34,6 +35,7 @@ const MobileNavLink = ({ to, label, onClick }) => {
             to={to}
             onClick={onClick}
             className={`block w-full text-left px-4 py-3 text-base font-medium rounded-md transition ${active ? 'bg-blue-50 text-brand-dark border-l-4 border-brand-dark' : 'text-gray-600 hover:bg-gray-50 hover:text-brand-dark'}`}
+            aria-current={active ? 'page' : undefined}
         >
             {label}
         </Link>
@@ -94,6 +96,7 @@ const Navbar = () => {
                                     : 'text-brand-dark bg-gray-100 hover:bg-gray-200'
                                 }
                             `}
+                            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         >
                             {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
                         </button>

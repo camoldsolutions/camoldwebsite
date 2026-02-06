@@ -22,7 +22,7 @@ import Button from '../components/ui/Button';
 
 const ServiceCard = ({ icon, title, description }) => (
     <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-green-200 h-full flex flex-col">
-        <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-green-600 transition-colors duration-300">
+        <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-green-600 transition-colors duration-300" aria-hidden="true">
             {React.cloneElement(icon, { className: "w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-300" })}
         </div>
         <h3 className="text-xl font-bold text-gray-900 mb-3 font-display">{title}</h3>
@@ -34,7 +34,7 @@ const ServiceCard = ({ icon, title, description }) => (
 
 const FeaturePoint = ({ text }) => (
     <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-green-300 transition duration-300">
-        <div className="bg-green-100 rounded-full p-1.5 mr-4">
+        <div className="bg-green-100 rounded-full p-1.5 mr-4" aria-hidden="true">
             <Check className="w-4 h-4 text-green-600" />
         </div>
         <span className="font-semibold text-gray-900">{text}</span>
@@ -43,7 +43,7 @@ const FeaturePoint = ({ text }) => (
 
 const TrustCard = ({ icon, title, desc }) => (
     <div className="bg-white rounded-xl p-6 shadow-xl border-b-4 border-green-500 h-full flex flex-col items-center text-center transition-transform hover:-translate-y-1">
-        <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-4 text-green-600">
+        <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-4 text-green-600" aria-hidden="true">
             {icon}
         </div>
         <h3 className="font-bold text-gray-900 text-lg mb-2 leading-tight">{title}</h3>
@@ -67,6 +67,7 @@ const Home = ({ navigateTo }) => {
                         src={ASSETS.heroImage}
                         alt="Professional Mold Inspection"
                         className="w-full h-full object-cover object-top"
+                        fetchpriority="high"
                     />
                 </div>
 
@@ -101,7 +102,7 @@ const Home = ({ navigateTo }) => {
                                 onClick={() => window.location.href = 'tel:7073505074'}
                                 className="bg-[#0B1F3F] hover:bg-[#1a3a6e] text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-lg flex items-center gap-3"
                             >
-                                <Phone className="w-5 h-5 text-white" /> (707) 350-5074
+                                <Phone className="w-5 h-5 text-white" aria-hidden="true" /> (707) 350-5074
                             </button>
                         </div>
                     </div>
@@ -205,7 +206,7 @@ Because Google shows results based on *your* location, test your site's ranking 
                     <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 flex flex-col justify-center items-center text-center text-white shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition duration-300">
                         <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition duration-300"></div>
                         <div className="relative z-10">
-                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 mb-4 inline-block">
+                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 mb-4 inline-block" aria-hidden="true">
                                 <Phone className="w-6 h-6" />
                             </div>
                             <h3 className="text-2xl font-bold mb-4 font-display">Emergency Mold Service?</h3>
@@ -231,6 +232,8 @@ Because Google shows results based on *your* location, test your site's ranking 
                             src={ASSETS.vanImage}
                             alt="CA Mold Solutions Van"
                             className="relative z-10 w-full rounded-2xl shadow-2xl transform transition duration-700 hover:scale-[1.02]"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
                     <div>

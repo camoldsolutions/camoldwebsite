@@ -65,7 +65,7 @@ const Footer = () => {
                         <h4 className="text-white font-bold text-lg mb-6 border-b border-slate-700 pb-2 inline-block">Contact Info</h4>
                         <ul className="space-y-4 text-sm">
                             <li className="flex items-start">
-                                <div className="bg-slate-800 p-2 rounded-lg mr-3">
+                                <div className="bg-slate-800 p-2 rounded-lg mr-3" aria-hidden="true">
                                     <Phone className="w-5 h-5 text-brand-primary" />
                                 </div>
                                 <div className="mt-1">
@@ -74,7 +74,7 @@ const Footer = () => {
                                 </div>
                             </li>
                             <li className="flex items-start">
-                                <div className="bg-slate-800 p-2 rounded-lg mr-3">
+                                <div className="bg-slate-800 p-2 rounded-lg mr-3" aria-hidden="true">
                                     <Mail className="w-5 h-5 text-brand-primary" />
                                 </div>
                                 <div className="mt-1">
@@ -82,7 +82,7 @@ const Footer = () => {
                                 </div>
                             </li>
                             <li className="flex items-start">
-                                <div className="bg-slate-800 p-2 rounded-lg mr-3">
+                                <div className="bg-slate-800 p-2 rounded-lg mr-3" aria-hidden="true">
                                     <MapPin className="w-5 h-5 text-brand-primary" />
                                 </div>
                                 <div className="mt-1">
