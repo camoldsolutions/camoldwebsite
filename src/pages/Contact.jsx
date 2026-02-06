@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SEO from '../components/SEO';
 import emailjs from '@emailjs/browser';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import Section from '../components/ui/Section';
@@ -51,6 +52,10 @@ const Contact = () => {
 
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50 min-h-screen font-sans">
+            <SEO
+                title="Contact Us"
+                description="Get in touch with CA Mold Solutions for a free phone consultation. 24/7 emergency response for mold inspection and remediation."
+            />
             {/* Header */}
             <div className="relative pt-32 pb-28 md:pt-48 md:pb-56 overflow-hidden">
                 <div className="absolute inset-0 z-0">

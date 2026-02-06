@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import { ASSETS } from '../lib/constants';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
@@ -6,6 +7,10 @@ import Button from '../components/ui/Button';
 const About = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <SEO
+                title="About Us"
+                description="Learn about CA Mold Solutions' mission to create healthier indoor environments through forensic-level mold inspection and eco-friendly remediation."
+            />
             {/* Hero */}
             <div className="bg-brand-dark pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>

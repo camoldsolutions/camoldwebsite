@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import { Award, ShieldCheck, Check, FlaskConical, Gavel, Scale } from 'lucide-react';
 import Section from '../components/ui/Section';
 import Card from '../components/ui/Card';
@@ -17,6 +18,10 @@ const StandardFeature = ({ icon, title, desc }) => (
 const Certifications = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50">
+            <SEO
+                title="Certifications & Standards"
+                description="We adhere to the highest industry standards including IICRC S520 and EPA protocols. Verified 3rd-party clearance testing on every job."
+            />
             {/* Header */}
             <div className="bg-white py-20 md:py-32 border-b border-slate-100 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-50"></div>

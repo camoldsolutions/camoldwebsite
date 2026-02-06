@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import {
     ShieldCheck,
     ArrowRight,
@@ -53,6 +54,11 @@ const TrustCard = ({ icon, title, desc }) => (
 const Home = ({ navigateTo }) => {
     return (
         <div className="animate-in fade-in duration-700 font-sans">
+            <SEO
+                title="Professional Mold Inspection & Remediation"
+                description="CA Mold Solutions offers certified mold inspection, testing, and remediation services throughout California. IICRC certified experts protecting your health."
+                keywords="mold inspection, mold remediation, mold testing, air quality testing, water damage restoration, California mold removal"
+            />
             {/* Hero Section */}
             <div className="relative min-h-[700px] flex items-center justify-center overflow-hidden">
                 {/* Hero Image Background */}

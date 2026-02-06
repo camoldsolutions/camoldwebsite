@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -7,38 +8,31 @@ import Certifications from './pages/Certifications';
 import Contact from './pages/Contact';
 
 const App = () => {
-    const [activePage, setActivePage] = useState('home');
+    const location = useLocation();
 
-    const navigateTo = (page) => {
-        setActivePage(page);
-        window.scrollTo(0, 0);
-    };
-
+    // Scroll to top on route change
     React.useEffect(() => {
-        const titles = {
-            home: 'CA Mold Solutions | Professional Mold Inspection & Remediation',
-            about: 'About Us | CA Mold Solutions',
-            certifications: 'Certifications & Standards | CA Mold Solutions',
-            contact: 'Contact Us | CA Mold Solutions'
-        };
-        document.title = titles[activePage] || 'CA Mold Solutions';
-    }, [activePage]);
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
 
-    const isTransparentPage = activePage === 'home';
+    const isTransparentPage = location.pathname === '/';
 
     return (
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col">
-            <Navbar activePage={activePage} navigateTo={navigateTo} />
+            <Navbar isTransparentPage={isTransparentPage} />
 
             {/* Main Content */}
             <main className={`flex-grow ${isTransparentPage ? 'pt-0' : 'pt-24 md:pt-28'}`}>
-                {activePage === 'home' && <Home navigateTo={navigateTo} />}
-                {activePage === 'about' && <About navigateTo={navigateTo} />}
-                {activePage === 'certifications' && <Certifications navigateTo={navigateTo} />}
-                {activePage === 'contact' && <Contact />}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/certifications" element={<Certifications />} />
+                    <Route path="/contact" element={<Contact />} />
+                    {/* Location pages will be added here later */}
+                </Routes>
             </main>
 
-            <Footer navigateTo={navigateTo} />
+            <Footer />
         </div>
     );
 };
