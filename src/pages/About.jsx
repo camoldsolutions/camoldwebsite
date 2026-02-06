@@ -6,7 +6,7 @@ import Button from '../components/ui/Button';
 
 const About = ({ navigateTo }) => {
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <main className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <SEO
                 title="About Us"
                 description="Learn about CA Mold Solutions' mission to create healthier indoor environments through forensic-level mold inspection and eco-friendly remediation."
@@ -56,7 +56,7 @@ const About = ({ navigateTo }) => {
                     </div>
                 </div>
             </Section>
-        </div>
+        </main>
     );
 };
 

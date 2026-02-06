@@ -9,7 +9,7 @@ export default {
             colors: {
                 brand: {
                     dark: '#0B1120', // Deep Navy/Slate
-                    primary: '#059669', // Emerald 600
+                    primary: '#047857', // Emerald 700 (AA compliant 5:1 contrast)
                     secondary: '#0EA5E9', // Sky 500
                     light: '#F8FAFC', // Slate 50
                     accent: '#F59E0B', // Amber 500

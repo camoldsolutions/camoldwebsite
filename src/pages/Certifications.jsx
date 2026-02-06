@@ -7,7 +7,7 @@ import Button from '../components/ui/Button';
 
 const StandardFeature = ({ icon, title, desc }) => (
     <div className="flex flex-col items-center text-center p-6">
-        <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-sm">
+        <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-sm" aria-hidden="true">
             {icon}
         </div>
         <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
@@ -17,7 +17,7 @@ const StandardFeature = ({ icon, title, desc }) => (
 
 const Certifications = ({ navigateTo }) => {
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50">
+        <main className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50">
             <SEO
                 title="Certifications & Standards"
                 description="We adhere to the highest industry standards including IICRC S520 and EPA protocols. Verified 3rd-party clearance testing on every job."
@@ -42,7 +42,7 @@ const Certifications = ({ navigateTo }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto -mt-20 md:-mt-32 relative z-20">
                     {/* IICRC Card */}
                     <div className="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mb-8 shadow-inner border border-blue-100">
+                        <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mb-8 shadow-inner border border-blue-100" aria-hidden="true">
                             <Award className="w-12 h-12 text-blue-600" />
                         </div>
                         <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">IICRC Certified</h2>
@@ -69,7 +69,7 @@ const Certifications = ({ navigateTo }) => {
 
                     {/* EPA Card */}
                     <div className="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 flex flex-col items-center text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                        <div className="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-8 shadow-inner border border-emerald-100">
+                        <div className="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-8 shadow-inner border border-emerald-100" aria-hidden="true">
                             <ShieldCheck className="w-12 h-12 text-emerald-600" />
                         </div>
                         <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">EPA Protocols</h2>
@@ -143,7 +143,7 @@ const Certifications = ({ navigateTo }) => {
                     </div>
                 </div>
             </Section>
-        </div>
+        </main>
     );
 };
 

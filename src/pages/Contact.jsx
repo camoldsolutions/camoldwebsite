@@ -9,7 +9,7 @@ import { ASSETS } from '../lib/constants';
 
 const ContactInfoItem = ({ icon, label, value, subval, href }) => (
     <div className="flex items-start group p-3 rounded-xl hover:bg-white/5 transition duration-300">
-        <div className="bg-emerald-500/10 p-3 rounded-full mr-3 flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300">
+        <div className="bg-emerald-500/10 p-3 rounded-full mr-3 flex-shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition duration-300" aria-hidden="true">
             {React.cloneElement(icon, { className: "w-5 h-5 text-emerald-400" })}
         </div>
         <div className="min-w-0 flex-grow pt-0.5">
@@ -51,7 +51,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50 min-h-screen font-sans">
+        <main className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-slate-50 min-h-screen font-sans">
             <SEO
                 title="Contact Us"
                 description="Get in touch with CA Mold Solutions for a free phone consultation. 24/7 emergency response for mold inspection and remediation."
@@ -59,7 +59,7 @@ const Contact = () => {
             {/* Header */}
             <div className="relative pt-32 pb-28 md:pt-48 md:pb-56 overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img src={ASSETS.heroImage} alt="Contact CA Mold Solutions" className="w-full h-full object-cover object-top filter brightness-50" />
+                    <img src={ASSETS.heroImage} alt="" className="w-full h-full object-cover object-top filter brightness-50" fetchpriority="high" />
                 </div>
                 <div className="absolute inset-0 bg-[#0B1F3F]/80 z-10"></div>
 
@@ -187,7 +187,7 @@ const Contact = () => {
                     </div>
                 </div>
             </Section>
-        </div>
+        </main>
     );
 };
 

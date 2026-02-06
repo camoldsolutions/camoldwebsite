@@ -21,7 +21,7 @@ const LocationPage = () => {
     const keywords = `mold inspection ${locationData.name}, mold remediation ${locationData.name}, mold removal ${locationData.name}, air quality testing ${locationData.name}, water damage ${locationData.name}`;
 
     return (
-        <div className="animate-in fade-in duration-500 font-sans">
+        <main className="animate-in fade-in duration-500 font-sans">
             <SEO
                 title={title}
                 description={description}
@@ -31,7 +31,7 @@ const LocationPage = () => {
             {/* Hero Section */}
             <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-brand-dark">
                 <div className="absolute inset-0 z-0 opacity-20" aria-hidden="true">
-                    <img src={ASSETS.heroImage} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    <img src={ASSETS.heroImage} alt="" className="w-full h-full object-cover" fetchpriority="high" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-primary/20 z-10"></div>
 
@@ -132,7 +132,7 @@ const LocationPage = () => {
                     Call (707) 350-5074 Now
                 </Button>
             </Section>
-        </div>
+        </main>
     );
 };
 
