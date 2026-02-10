@@ -52,12 +52,41 @@ const TrustCard = ({ icon, title, desc }) => (
 );
 
 const Home = ({ navigateTo }) => {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "CA Mold Solutions",
+        "image": "https://images.squarespace-cdn.com/content/v1/695e124922ee964abeffdd7f/3afe0f26-ea59-467c-8422-779a5c0b9cb0/MOD+4.PNG",
+        "@id": "https://camoldsolutions.com",
+        "url": "https://camoldsolutions.com",
+        "telephone": "707-350-5074",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Torrance",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 33.8358,
+            "longitude": -118.3406
+        },
+        "areaServed": [
+            { "@type": "City", "name": "Torrance" },
+            { "@type": "City", "name": "Long Beach" },
+            { "@type": "City", "name": "Redondo Beach" },
+            { "@type": "City", "name": "Manhattan Beach" }
+        ],
+        "description": "Certified mold inspection, testing, and remediation services in Torrance and throughout California."
+    };
+
     return (
         <main className="animate-in fade-in duration-700 font-sans">
             <SEO
-                title="Professional Mold Inspection & Remediation"
-                description="CA Mold Solutions offers certified mold inspection, testing, and remediation services throughout California. IICRC certified experts protecting your health."
-                keywords="mold inspection, mold remediation, mold testing, air quality testing, water damage restoration, California mold removal"
+                title="Professional Mold Inspection & Remediation in Torrance"
+                description="CA Mold Solutions offers certified mold inspection, testing, and remediation services in Torrance and throughout California. IICRC certified experts protecting your health."
+                keywords="mold inspection Torrance, mold remediation Torrance, mold testing Torrance, air quality testing, water damage restoration, South Bay mold removal"
+                structuredData={structuredData}
             />
             {/* Hero Section */}
             <div className="relative min-h-[700px] flex items-center justify-center overflow-hidden">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-const SEO = ({ title, description, keywords, image, type = 'website' }) => {
+const SEO = ({ title, description, keywords, image, type = 'website', structuredData }) => {
     const location = useLocation();
     const siteUrl = 'https://camoldsolutions.com';
     const currentUrl = `${siteUrl}${location.pathname}`;
@@ -32,6 +32,13 @@ const SEO = ({ title, description, keywords, image, type = 'website' }) => {
             <meta property="twitter:title" content={fullTitle} />
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={image || defaultImage} />
+
+            {/* Structured Data */}
+            {structuredData && (
+                <script type="application/ld+json">
+                    {JSON.stringify(structuredData)}
+                </script>
+            )}
         </Helmet>
     );
 };

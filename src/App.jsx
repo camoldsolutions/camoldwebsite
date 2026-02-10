@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Certifications from './pages/Certifications';
 import Contact from './pages/Contact';
+import CityDetail from './pages/CityDetail';
 
 const App = () => {
     const location = useLocation();
@@ -15,7 +16,7 @@ const App = () => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
 
-    const isTransparentPage = location.pathname === '/';
+    const isTransparentPage = location.pathname === '/' || location.pathname.startsWith('/locations/');
 
     return (
         <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col">
@@ -28,7 +29,7 @@ const App = () => {
                     <Route path="/about" element={<About />} />
                     <Route path="/certifications" element={<Certifications />} />
                     <Route path="/contact" element={<Contact />} />
-                    {/* Location pages will be added here later */}
+                    <Route path="/locations/:citySlug" element={<CityDetail />} />
                 </Routes>
             </main>
 
