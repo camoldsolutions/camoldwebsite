@@ -36,47 +36,51 @@ const Contact = () => {
 
     const sendEmail = async (e) => {
         e.preventDefault();
+        const form = e.currentTarget;
         setLoading(true);
         setStatus(null);
 
-        const formData = new FormData(e.currentTarget);
-        const visitorEmail = formData.get('email');
-        const submittedAt = new Date().toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-            timeZoneName: 'short',
-        });
-
-        const templateParams = {
-            user_firstname: formData.get('first_name'),
-            user_lastname: formData.get('last_name'),
-            user_phone: formData.get('phone'),
-            user_email: visitorEmail,
-            first_name: formData.get('first_name'),
-            last_name: formData.get('last_name'),
-            phone: formData.get('phone'),
-            email: visitorEmail,
-            reply_to: visitorEmail,
-            to_email: CONTACT_EMAIL,
-            subject: 'New website contact form message',
-            message: formData.get('message'),
-            submission_time: submittedAt,
-            page_url: window.location.href,
-            'First Name': formData.get('first_name'),
-            'Last Name': formData.get('last_name'),
-            Phone: formData.get('phone'),
-            Email: visitorEmail,
-            Message: formData.get('message'),
-            'Submission time': submittedAt,
-            'Page URL': window.location.href,
-        };
-
         try {
+            const formData = new FormData(form);
+            const visitorEmail = formData.get('email');
+            const submittedAt = new Date().toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                timeZoneName: 'short',
+            });
+
+            const templateParams = {
+                user_firstname: formData.get('first_name'),
+                user_lastname: formData.get('last_name'),
+                user_phone: formData.get('phone'),
+                user_email: visitorEmail,
+                first_name: formData.get('first_name'),
+                last_name: formData.get('last_name'),
+                phone: formData.get('phone'),
+                email: visitorEmail,
+                reply_to: visitorEmail,
+                to_email: CONTACT_EMAIL,
+                subject: 'New website contact form message',
+                message: formData.get('message'),
+                submission_time: submittedAt,
+                page_url: window.location.href,
+                'First Name': formData.get('first_name'),
+                'Last Name': formData.get('last_name'),
+                Phone: formData.get('phone'),
+                Email: visitorEmail,
+                Message: formData.get('message'),
+                'Submission time': submittedAt,
+                'Page URL': window.location.href,
+            };
+
             await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
                 .catch((autoReplyError) => console.error('Auto-reply failed:', autoReplyError));
             setStatus('success');
-            e.currentTarget.reset();
+            form.reset();
         } catch (error) {
             console.error(error);
             setStatus('error');
